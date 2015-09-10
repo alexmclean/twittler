@@ -17,10 +17,15 @@
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div class="tweet"></div>');
-          var $author = $('<span class="tweetAuthor"></span>').text(tweet.user);
+          var $author = $('<div class="tweetAuthor"></div>').text(tweet.user);
+          var $message = $('<div class="tweetMessage"></div>').text(tweet.message);
+          var $date = $('<div class="tweetDate"></div>').text(tweet.created_at);
           $author.appendTo($tweet);
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
+          $message.appendTo($tweet);
+          $date.appendTo($tweet);
+          //$tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
           $tweet.appendTo(box);
+          $('<hr>').appendTo(box);
           index -= 1;
         }
       }
@@ -43,7 +48,11 @@
           index -= 1;
         } */
 
-        
+        $('.refresh').on('click', function(){
+          $('.tweet').remove();
+          $('hr').remove();
+          buildTweets(streams.home.length - 1, $tweetBox);
+        });
 
       });
 

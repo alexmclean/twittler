@@ -14,7 +14,7 @@ div {
 }
 
 #tweetBox {
-	width: 60%;
+	width: 300px;
 }
 
 .tweet {
@@ -24,5 +24,16 @@ div {
 }
 
 .tweetAuthor {
-	text-align: left;
+	color: orange;
+}
+
+.tweetMessage {
+	color: black;
+	font-size: 32px;
+	padding: 5px 0;
+}
+
+.tweetDate {
+	color: blue;
+	font-size: 12px;
 }
