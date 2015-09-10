@@ -1,0 +1,28 @@
+
+#title {
+	color: red;
+	text-align: center;
+	font-size: 30px;
+}
+
+body {
+	background-color: #666666;
+}
+
+div {
+	background-color: white;
+}
+
+#tweetBox {
+	width: 60%;
+}
+
+.tweet {
+	color: blue;
+	padding: 10px 5px;
+	text-align: center;
+}
+
+.tweetAuthor {
+	text-align: left;
+}
