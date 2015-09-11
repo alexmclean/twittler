@@ -52,8 +52,17 @@ button {
 	text-align: center;
 }
 
+.tweetDividers {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
 .tweetAuthor {
 	color: orange;
+}
+
+.tweetAuthor:hover{
+	color:green;
 }
 
 .tweetMessage {

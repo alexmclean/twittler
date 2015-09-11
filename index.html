@@ -42,8 +42,6 @@
         var index = streams.home.length - 1;
         buildTweets(streams.home, index, $tweetBox);
 
-        var targetUser;
-        var wholeAuthor;
 
         $('.refresh').on('click', function(){
           $('.tweet').remove();
@@ -51,11 +49,11 @@
           buildTweets(streams.home, streams.home.length - 1, $tweetBox);
         });
 
-        $('.tweetAuthor').on('click', function(){
+        $('#tweetbox').on('click','.tweetAuthor', function(){
           $('.tweet').remove();
           $('.tweetDividers').remove();
-          wholeAuthor = $(this).text();
-          targetUser = streams.users[wholeAuthor.slice(1,wholeAuthor.length)];
+          var wholeAuthor = $(this).text();
+          var targetUser = streams.users[wholeAuthor.slice(1,wholeAuthor.length)];
           buildTweets(targetUser, targetUser.length - 1, $tweetBox);
         });
 
