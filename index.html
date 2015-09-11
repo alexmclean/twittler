@@ -4,28 +4,32 @@
     <link rel="stylesheet" type="text/css" href="twittler.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
+    <script src="moment.js"></script>
 
   </head>
   <body>
+    <div id='title'>
+      <h1>Twittler</h1>
+      <hr class="title-line">
+    </div>
+    <button class="refresh">Refresh Tweets</button>
     <div id="tweetbox">
-      <div id='title'>Current Tweets</div>
     </div>
     <script>
-
+      moment().format();
       //function to create visual list of tweets
-      function buildTweets(index, box) {
+      function buildTweets(source, index, box) {
         while(index >= 0){
-          var tweet = streams.home[index];
+          var tweet = source[index];
           var $tweet = $('<div class="tweet"></div>');
-          var $author = $('<div class="tweetAuthor"></div>').text(tweet.user);
+          var $author = $('<div href="#" class="tweetAuthor"></div>').text("@" + tweet.user);
           var $message = $('<div class="tweetMessage"></div>').text(tweet.message);
-          var $date = $('<div class="tweetDate"></div>').text(tweet.created_at);
+          var $date = $('<div class="tweetDate"></div>').text(moment(tweet.created_at).fromNow());
           $author.appendTo($tweet);
           $message.appendTo($tweet);
           $date.appendTo($tweet);
-          //$tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
           $tweet.appendTo(box);
-          $('<hr>').appendTo(box);
+          $('<hr class="tweetDividers">').appendTo(box);
           index -= 1;
         }
       }
@@ -36,27 +40,27 @@
         var $tweetBox = $('#tweetbox');
         //$body.html('');
         var index = streams.home.length - 1;
-        buildTweets(index, $tweetBox);
-        /*
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div class="tweet"></div>');
-          var $author = $('<span class="tweetAuthor"></span>').text(tweet.user);
-          $author.appendTo($tweet);
-          $tweet.text('@' + tweet.user + ': ' + tweet.message + ' ' + tweet.created_at);
-          $tweet.appendTo($tweetBox);
-          index -= 1;
-        } */
+        buildTweets(streams.home, index, $tweetBox);
+
+        var targetUser;
+        var wholeAuthor;
 
         $('.refresh').on('click', function(){
           $('.tweet').remove();
-          $('hr').remove();
-          buildTweets(streams.home.length - 1, $tweetBox);
+          $('.tweetDividers').remove();
+          buildTweets(streams.home, streams.home.length - 1, $tweetBox);
+        });
+
+        $('.tweetAuthor').on('click', function(){
+          $('.tweet').remove();
+          $('.tweetDividers').remove();
+          wholeAuthor = $(this).text();
+          targetUser = streams.users[wholeAuthor.slice(1,wholeAuthor.length)];
+          buildTweets(targetUser, targetUser.length - 1, $tweetBox);
         });
 
       });
 
     </script>
-    <button class="refresh">Refresh Tweets</button>
   </body>
 </html>

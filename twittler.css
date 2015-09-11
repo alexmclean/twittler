@@ -1,20 +1,49 @@
 
 #title {
-	color: red;
+	color: white;
 	text-align: center;
-	font-size: 30px;
+	background-color: #002952;
+	height: 100px;
+	margin-top: 5px;
+}
+
+h1 {
+	font-size: 40px;
+	text-align: left;
+	margin-left: 125px;
+}
+
+.title-line {
+	color: white;
+	margin-left: 125px;
+	margin-right: 125px;
+	margin-top: -20px;
 }
 
 body {
-	background-color: #666666;
+	background-color: #002952;
+	font-family: Helvetica;
 }
 
 div {
 	background-color: white;
 }
 
-#tweetBox {
-	width: 300px;
+button {
+	background-color: #0066CC;
+	margin-left: 125px;
+	width: 20%;
+	height: 40px;
+	color: white;
+	font-size: 20px;
+	border-radius: 7px;
+	box-shadow: none;
+}
+
+#tweetbox {
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
 }
 
 .tweet {
